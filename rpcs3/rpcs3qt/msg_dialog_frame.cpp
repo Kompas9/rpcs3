@@ -309,7 +309,7 @@ void msg_dialog_frame::CreateOsk(const std::string& msg, char16_t* osk_text, u32
 	m_osk_dialog->show();
 }
 
-msg_dialog_frame::msg_dialog_frame(QWindow* taskbarTarget) : m_taskbarTarget(taskbarTarget) {}
+msg_dialog_frame::msg_dialog_frame() {}
 
 msg_dialog_frame::~msg_dialog_frame()
 {

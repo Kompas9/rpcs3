@@ -164,6 +164,7 @@ struct EmuCallbacks
 	std::function<std::shared_ptr<class GSRender>()> get_gs_render;
 	std::function<std::shared_ptr<class AudioThread>()> get_audio;
 	std::function<std::shared_ptr<class MsgDialogBase>()> get_msg_dialog;
+	std::function<std::shared_ptr<class MsgDialogBase>()> get_progress_dialog;
 	std::function<std::unique_ptr<class SaveDialogBase>()> get_save_dialog;
 };
 

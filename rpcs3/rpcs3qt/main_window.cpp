@@ -49,6 +49,60 @@ inline std::string sstr(const QString& _in) { return _in.toUtf8().toStdString();
 
 main_window::main_window(std::shared_ptr<gui_settings> guiSettings, QWidget *parent) : QMainWindow(parent), guiSettings(guiSettings), m_sys_menu_opened(false), ui(new Ui::main_window)
 {
+	//progress_dialog_frame* m0 = new progress_dialog_frame();
+	//m0->Create("Hello World0");
+	//
+	//progress_dialog_frame* m1 = new progress_dialog_frame();
+	//m1->Create("Hello World1");
+	//
+	//progress_dialog_frame* m2 = new progress_dialog_frame();
+	//m2->Create("Hello World2");
+	//
+	//progress_dialog_frame* m3 = new progress_dialog_frame();
+	//m3->Create("Hello World3");
+	//
+	//progress_dialog_frame* m4 = new progress_dialog_frame();
+	//m4->Create("Hello World4");
+	//
+	//progress_dialog_frame* m5 = new progress_dialog_frame();
+	//m5->Create("Hello World4");
+	//
+	//progress_dialog_frame* m6 = new progress_dialog_frame();
+	//m6->Create("Hello World4");
+	//
+	//progress_dialog_frame* m7 = new progress_dialog_frame();
+	//m7->Create("Hello World4");
+	//
+	//progress_dialog_frame* m8 = new progress_dialog_frame();
+	//m8->Create("Hello World4");
+	//
+	//progress_dialog_frame* m9 = new progress_dialog_frame();
+	//m9->Create("Hello World4");
+	//
+	//progress_dialog_frame* m10 = new progress_dialog_frame();
+	//m10->Create("Hello World4");
+
+	//struct {
+	//	void operator()(progress_dialog_frame* pdf, int i, int t) const
+	//	{
+	//		pdf->ProgressBarSetMsg("Hello World3", "20/100");
+	//		pdf->ProgressBarInc(i);
+	//		if (!pdf->Finished())
+	//		{
+	//			QTimer::singleShot(t, [=]() { (*this)(pdf, i, t); });
+	//		}
+	//		else
+	//		{
+	//			pdf->~progress_dialog_frame();
+	//		}
+	//	}
+	//} fact;
+	//
+	//fact(m0, 1, 100);
+	//fact(m1, 2, 120);
+	//fact(m2, 5, 300);
+	//fact(m3, 10, 1000);
+	//fact(m4, 50, 10000);
 }
 
 main_window::~main_window()

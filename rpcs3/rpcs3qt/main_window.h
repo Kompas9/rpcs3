@@ -15,6 +15,7 @@
 #include "debugger_frame.h"
 #include "game_list_frame.h"
 #include "gui_settings.h"
+#include "progress_dialog_frame.h"
 
 #include <memory>
 

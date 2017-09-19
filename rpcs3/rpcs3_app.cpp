@@ -233,7 +233,12 @@ void rpcs3_app::InitializeCallbacks()
 
 	callbacks.get_msg_dialog = [=]() -> std::shared_ptr<MsgDialogBase>
 	{
-		return std::make_shared<msg_dialog_frame>(RPCS3MainWin->windowHandle());
+		return std::make_shared<msg_dialog_frame>();
+	};
+
+	callbacks.get_progress_dialog = [=]() -> std::shared_ptr<MsgDialogBase>
+	{
+		return std::make_shared<progress_dialog_frame>();
 	};
 
 	callbacks.get_save_dialog = [=]() -> std::unique_ptr<SaveDialogBase>

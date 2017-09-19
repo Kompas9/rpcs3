@@ -1363,10 +1363,10 @@ static void ppu_initialize2(jit_compiler& jit, const ppu_module& module_part, co
 		//pm.add(createLintPass()); // Check
 
 		// Initialize message dialog
-		dlg = Emu.GetCallbacks().get_msg_dialog();
-		dlg->type.se_normal = true;
-		dlg->type.bg_invisible = true;
-		dlg->type.progress_bar_count = 1;
+		dlg = Emu.GetCallbacks().get_progress_dialog();
+		//dlg->type.se_normal = true;
+		//dlg->type.bg_invisible = true;
+		//dlg->type.progress_bar_count = 1;
 		dlg->on_close = [](s32 status)
 		{
 			Emu.CallAfter([]()
