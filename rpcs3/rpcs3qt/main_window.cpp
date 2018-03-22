@@ -7,6 +7,7 @@
 #include <QDockWidget>
 #include <QDesktopWidget>
 #include <QMimeData>
+#include <QStorageInfo>
 
 #include "qt_utils.h"
 #include "vfs_dialog.h"
@@ -355,6 +356,29 @@ void main_window::InstallPkg(const QString& dropPath)
 		// Run PKG unpacking asynchronously
 		scope_thread worker("PKG Installer", [&]
 		{
+			u64 expected_size;
+			if (!pkg_install(path, progress, &expected_size))
+			{
+				progress = -1.;
+				return;
+			}
+
+			QStorageInfo storage(qstr(Emu.GetHddDir()));
+			if (!storage.isValid() || !storage.isReady())
+			{
+				LOG_FATAL(LOADER, "pkg_install storage error");
+				progress = -1.;
+				return;
+			}
+
+			qint64 bytes_available = storage.bytesAvailable();
+			if (bytes_available < 0 || expected_size > (u64)bytes_available)
+			{
+				LOG_ERROR(LOADER, "pkg_install not enough storage: expected_size=%d, bytesAvailable=%d", expected_size, bytes_available);
+				progress = -2.;
+				return;
+			}
+
 			if (pkg_install(path, progress))
 			{
 				progress = 1.;
@@ -391,6 +415,14 @@ void main_window::InstallPkg(const QString& dropPath)
 		m_gameListFrame->Refresh(true);
 		LOG_SUCCESS(GENERAL, "Successfully installed %s.", fileName);
 		guiSettings->ShowInfoBox(gui::ib_pkg_success, tr("Success!"), tr("Successfully installed software from package!"), this);
+	}
+	else
+	{
+		if (progress == -2.)
+		{
+			pdlg.close();
+			QMessageBox::critical(this, tr("Failure!"), tr("Error while installing software: Not enough disc space!"));
+		}
 	}
 }
 

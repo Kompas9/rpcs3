@@ -524,8 +524,9 @@ void trophy_manager_dialog::PopulateUI()
 	}
 }
 
-void trophy_manager_dialog::closeEvent(QCloseEvent * event)
+void trophy_manager_dialog::closeEvent(QCloseEvent *event)
 {
 	// Save gui settings
 	m_gui_settings->SetValue(gui::tr_geometry, saveGeometry());
+	QWidget::closeEvent(event);
 }

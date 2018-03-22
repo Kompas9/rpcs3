@@ -8,7 +8,7 @@
 #include "Emu/VFS.h"
 #include "unpkg.h"
 
-bool pkg_install(const std::string& path, atomic_t<double>& sync)
+bool pkg_install(const std::string& path, atomic_t<double>& sync, u64* size)
 {
 	const std::size_t BUF_SIZE = 8192 * 1024; // 8 MB
 
@@ -78,6 +78,12 @@ bool pkg_install(const std::string& path, atomic_t<double>& sync)
 	{
 		LOG_ERROR(LOADER, "Not a PKG file!");
 		return false;
+	}
+
+	if (size)
+	{
+		*size = std::max(header.pkg_size, header.data_size);
+		return true;
 	}
 
 	switch (const u16 type = header.pkg_type)
