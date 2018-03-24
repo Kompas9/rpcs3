@@ -81,6 +81,9 @@ enum
 	CELL_GAME_ATTRIBUTE_INVITE_MESSAGE      = 0x20,
 	CELL_GAME_ATTRIBUTE_CUSTOM_DATA_MESSAGE = 0x40,
 	CELL_GAME_ATTRIBUTE_WEB_BROWSER         = 0x100,
+
+	CELL_GAME_THEME_OPTION_NONE  = 0x1,
+	CELL_GAME_THEME_OPTION_APPLY = 0x1,
 };
 
 //Parameter IDs of PARAM.SFO
@@ -319,3 +322,4 @@ struct CellHddGameStatSet
 };
 
 typedef void(CellHddGameStatCallback)(vm::ptr<CellHddGameCBResult> cbResult, vm::ptr<CellHddGameStatGet> get, vm::ptr<CellHddGameStatSet> set);
+typedef void(CellGameThemeInstallCallback)(u32 fileOffset, u32 readSize, vm::ptr<void> buf);

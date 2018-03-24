@@ -193,7 +193,8 @@ s32 cellHddGameCheck(ppu_thread& ppu, u32 version, vm::cptr<char> dirName, u32 e
 
 s32 cellHddGameCheck2()
 {
-	fmt::throw_exception("Unimplemented" HERE);
+	UNIMPLEMENTED_FUNC(cellGame);
+	return CELL_OK;
 }
 
 s32 cellHddGameGetSizeKB(vm::ptr<u32> size)
@@ -220,9 +221,9 @@ s32 cellHddGameSetSystemVer()
 
 s32 cellHddGameExitBroken()
 {
-	fmt::throw_exception("Unimplemented" HERE);
+	UNIMPLEMENTED_FUNC(cellGame);
+	return CELL_OK;
 }
-
 
 s32 cellGameDataGetSizeKB(vm::ptr<u32> size)
 {
@@ -248,9 +249,9 @@ s32 cellGameDataSetSystemVer()
 
 s32 cellGameDataExitBroken()
 {
-	fmt::throw_exception("Unimplemented" HERE);
+	UNIMPLEMENTED_FUNC(cellGame);
+	return CELL_OK;
 }
-
 
 error_code cellGameBootCheck(vm::ptr<u32> type, vm::ptr<u32> attributes, vm::ptr<CellGameContentSize> size, vm::ptr<char[CELL_GAME_DIRNAME_SIZE]> dirName)
 {
@@ -609,9 +610,15 @@ error_code cellGameCreateGameData(vm::ptr<CellGameSetInitParams> init, vm::ptr<c
 	return CELL_OK;
 }
 
-s32 cellGameDeleteGameData()
+s32 cellGameDeleteGameData(vm::cptr<u8> dirName)
 {
-	UNIMPLEMENTED_FUNC(cellGame);
+	cellGame.todo("cellGameDeleteGameData(dirName=%s)", dirName);
+
+	if (dirName.size() > CELL_GAME_DIRNAME_SIZE)
+	{
+		return CELL_GAME_ERROR_PARAM;
+	}
+
 	return CELL_OK;
 }
 
@@ -771,15 +778,27 @@ error_code cellGameGetSizeKB(vm::ptr<s32> size)
 	return CELL_OK;
 }
 
-s32 cellGameGetDiscContentInfoUpdatePath()
+s32 cellGameGetDiscContentInfoUpdatePath(vm::ptr<u8> updatePath)
 {
-	UNIMPLEMENTED_FUNC(cellGame);
+	cellGame.todo("cellGameGetDiscContentInfoUpdatePath(updatePath=%s)", updatePath);
+
+	if (updatePath.size() > CELL_GAME_PATH_MAX)
+	{
+		return CELL_GAME_ERROR_PARAM;
+	}
+
 	return CELL_OK;
 }
 
-s32 cellGameGetLocalWebContentPath()
+s32 cellGameGetLocalWebContentPath(vm::ptr<u8> contentPath)
 {
-	UNIMPLEMENTED_FUNC(cellGame);
+	cellGame.todo("cellGameGetLocalWebContentPath(contentPath=%s)", contentPath);
+
+	if (contentPath.size() > CELL_GAME_PATH_MAX)
+	{
+		return CELL_GAME_ERROR_PARAM;
+	}
+
 	return CELL_OK;
 }
 
@@ -840,15 +859,27 @@ error_code cellGameContentErrorDialog(s32 type, s32 errNeedSizeKB, vm::cptr<char
 	return CELL_OK;
 }
 
-s32 cellGameThemeInstall()
+s32 cellGameThemeInstall(vm::cptr<u8> usrdirPath, vm::cptr<u8> fileName, u32 option)
 {
-	UNIMPLEMENTED_FUNC(cellGame);
+	cellGame.todo("cellGameThemeInstall(usrdirPath=*0x%x, fileName=*0x%x, option=%d)", usrdirPath, fileName, option);
+
+	if (option > CELL_GAME_THEME_OPTION_APPLY)
+	{
+		return CELL_GAME_ERROR_PARAM;
+	}
+
 	return CELL_OK;
 }
 
-s32 cellGameThemeInstallFromBuffer()
+s32 cellGameThemeInstallFromBuffer(u32 fileSize, u32 bufSize, vm::ptr<void> buf, vm::ptr<CellGameThemeInstallCallback> func, u32 option)
 {
-	UNIMPLEMENTED_FUNC(cellGame);
+	cellGame.todo("cellGameThemeInstallFromBuffer(fileSize=%d, bufSize=%d, buf=*0x%x, func=*0x%x, option=%d)", fileSize, bufSize, buf, func, option);
+
+	if (option > CELL_GAME_THEME_OPTION_APPLY)
+	{
+		return CELL_GAME_ERROR_PARAM;
+	}
+
 	return CELL_OK;
 }
 
@@ -902,7 +933,6 @@ s32 cellGameUnregisterDiscChangeCallback()
 	UNIMPLEMENTED_FUNC(cellGame);
 	return CELL_OK;
 }
-
 
 void cellSysutil_GameData_init()
 {
