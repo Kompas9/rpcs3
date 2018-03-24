@@ -65,6 +65,10 @@ s32 cellVideoOutGetGamma(u32 videoOut, vm::ptr<f32> gamma)
 s32 cellAudioInGetAvailableDeviceInfo(u32 count, vm::ptr<CellAudioInDeviceInfo> info)
 {
 	cellAvconfExt.todo("cellAudioInGetAvailableDeviceInfo(count=0x%x, info=*0x%x)", count, info);
+
+	if (count > 16)
+		return CELL_AUDIO_IN_ERROR_PARAMETER_OUT_OF_RANGE;
+
 	return 0; // number of available devices
 }
 
@@ -103,12 +107,20 @@ s32 cellAudioOutRegisterDevice(u64 deviceType, vm::cptr<char> name, vm::ptr<Cell
 s32 cellAudioOutSetDeviceMode(u32 deviceMode)
 {
 	cellAvconfExt.todo("cellAudioOutSetDeviceMode(deviceMode=0x%x)", deviceMode);
+
+	if (deviceMode > CELL_AUDIO_OUT_MULTI_DEVICE_MODE_2)
+		return CELL_AUDIO_IN_ERROR_PARAMETER_OUT_OF_RANGE;
+
 	return CELL_OK;
 }
 
 s32 cellAudioInSetDeviceMode(u32 deviceMode)
 {
 	cellAvconfExt.todo("cellAudioInSetDeviceMode(deviceMode=0x%x)", deviceMode);
+
+	if (deviceMode > CELL_AUDIO_OUT_MULTI_DEVICE_MODE_2)
+		return CELL_AUDIO_IN_ERROR_PARAMETER_OUT_OF_RANGE;
+
 	return CELL_OK;
 }
 
