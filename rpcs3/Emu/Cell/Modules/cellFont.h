@@ -96,6 +96,12 @@ enum
 
 enum
 {
+	CELL_FONT_LIBRARY_NONE          = 0,
+	CELL_FONT_LIBRARY_TYPE_FREETYPE = 2,
+};
+
+enum
+{
 	CELL_FONT_MAP_FONT    = 0,
 	CELL_FONT_MAP_UNICODE = 1,
 };
@@ -114,6 +120,7 @@ using CellFontMallocCallback = vm::ptr<void>(vm::ptr<void> arg, u32 size);
 using CellFontFreeCallback = void(vm::ptr<void> arg, vm::ptr<void> ptr);
 using CellFontReallocCallback = vm::ptr<void>(vm::ptr<void> arg, vm::ptr<void> p, u32 reallocSize);
 using CellFontCallocCallback = vm::ptr<void>(vm::ptr<void> arg, u32 num, u32 size);
+using CellFontGetOutlineVertexCallback = void(vm::ptr<void> arg, s32 contoursN, s32 vertexNumber, s32 vertexAttr, f32 x, f32 y);
 
 struct CellFontMemoryInterface
 {
@@ -171,6 +178,35 @@ struct CellFontVerticalLayout
 	be_t<f32> effectWidth;
 };
 
+struct CellFontGlyphOutline
+{
+	//be_t<s16> contoursCount;
+	//be_t<s16> pointsCount;
+	//struct
+	//{
+	//	be_t<f32> x, y;
+	//} *Points;
+	//vm::bptr<s8> pointTags;
+	//vm::bptr<u16> contourIndexs;
+	//be_t<u32> flags;
+	//vm::bptr<void> generateEnv;
+};
+
+struct CellFontGlyphStyle
+{
+	//struct
+	//{
+	//	be_t<f32> widthPixel;  //Horizontal scale of glyph (pixels)
+	//	be_t<f32> heightPixel; //Vertical scale of glyph (pixels)
+	//} Scale;
+	//
+	//struct
+	//{
+	//	be_t<f32> weight; // Weight adjustment value (0.93–1.04) for glyph
+	//	be_t<f32> slant;  // Slant of glyph (-1.0-1.0)
+	//} Effect;
+};
+
 struct CellFontGlyphMetrics
 {
 	be_t<f32> width;
@@ -183,6 +219,15 @@ struct CellFontGlyphMetrics
 	be_t<f32> v_bearingX;
 	be_t<f32> v_bearingY;
 	be_t<f32> v_advance;
+};
+
+struct CellFontGlyph
+{
+	//be_t<u16> CF_type;
+	//be_t<u16> type;
+	//be_t<u32> size;
+	//be_t<CellFontGlyphMetrics> Metrics;
+	//be_t<CellFontGlyphOutline> Outline;
 };
 
 struct CellFontRenderSurface
@@ -212,9 +257,9 @@ struct CellFontImageTransInfo
 
 struct CellFont
 {
-	be_t<float> scale_x;
-	be_t<float> scale_y;
-	be_t<float> slant;
+	be_t<f32> scale_x;
+	be_t<f32> scale_y;
+	be_t<f32> slant;
 	be_t<u32> renderer_addr;
 
 	be_t<u32> fontdata_addr;
@@ -238,8 +283,56 @@ struct CellFontRenderer
 	void *systemReserved[64];
 };
 
+struct CellFontGlyphBoundingBox
+{
+	//struct
+	//{
+	//	be_t<f32> x, y;
+	//} Min;
+	//
+	//struct
+	//{
+	//	be_t<f32> x, y;
+	//} Max;
+};
+
+struct CellFontGetOutlineVertexesIF
+{
+	//CellFontGetOutlineVertexCallback callback;
+	//vm::bptr<void> arg;
+};
+
+struct CellFontGraphicsDrawContext
+{
+	// ...
+};
+
 struct CellFontGraphics
 {
 	be_t<u32> graphicsType;
 	// ...
+};
+
+struct CellFontKerning
+{
+	//be_t<f32> offsetX;
+	//be_t<f32> offsetY;
+};
+
+struct CellFontVertexesGlyphData
+{
+	//const be_t<u32> size;
+	// ...
+};
+
+struct CellFontVertexesGlyphSubHeader
+{
+	//be_t<u32> size;
+	// ...
+};
+
+struct CellFontVertexesGlyph
+{
+	//vm::bptr<CellFontVertexesGlyphData> data;
+	//vm::bptr<CellFontVertexesGlyphSubHeader> subHeader;
 };
