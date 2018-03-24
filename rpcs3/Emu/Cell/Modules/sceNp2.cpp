@@ -67,9 +67,9 @@ s32 sceNpMatching2Term2()
 	return CELL_OK;
 }
 
-s32 sceNpMatching2DestroyContext()
+s32 sceNpMatching2DestroyContext(u16 ctxId)
 {
-	UNIMPLEMENTED_FUNC(sceNp2);
+	sceNp2.todo("sceNpMatching2DestroyContext(ctxId=%d)", ctxId);
 	return CELL_OK;
 }
 
@@ -427,9 +427,9 @@ s32 sceNpMatching2SendLobbyInvitation()
 	return CELL_OK;
 }
 
-s32 sceNpMatching2ContextStop()
+s32 sceNpMatching2ContextStop(u16 ctxId)
 {
-	UNIMPLEMENTED_FUNC(sceNp2);
+	sceNp2.todo("sceNpMatching2ContextStop(ctxId=%d)", ctxId);
 	return CELL_OK;
 }
 

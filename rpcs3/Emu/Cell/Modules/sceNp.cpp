@@ -1658,9 +1658,9 @@ s32 sceNpSignalingCreateCtx()
 	return CELL_OK;
 }
 
-s32 sceNpSignalingDestroyCtx()
+s32 sceNpSignalingDestroyCtx(u32 ctx_id)
 {
-	UNIMPLEMENTED_FUNC(sceNp);
+	sceNp.todo("sceNpSignalingDestroyCtx(ctx_id=%d)", ctx_id);
 	return CELL_OK;
 }
 
