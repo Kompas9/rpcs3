@@ -7,9 +7,9 @@
 logs::channel cellVoice("cellVoice");
 
 
-s32 cellVoiceConnectIPortToOPort()
+s32 cellVoiceConnectIPortToOPort(u32 ips, u32 ops)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceConnectIPortToOPort(ips=%d, ops=%d)", ips, ops);
 	return CELL_OK;
 }
 
@@ -19,87 +19,87 @@ s32 cellVoiceCreateNotifyEventQueue()
 	return CELL_OK;
 }
 
-s32 cellVoiceCreatePort()
+s32 cellVoiceCreatePort(vm::ptr<u32> portId, vm::cptr<CellVoicePortParam> pArg)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceCreatePort(portId=*0x%x, pArg=*0x%x)", portId, pArg);
 	return CELL_OK;
 }
 
-s32 cellVoiceDeletePort()
+s32 cellVoiceDeletePort(u32 portId)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceDeletePort(portId=%d)", portId);
 	return CELL_OK;
 }
 
-s32 cellVoiceDisconnectIPortFromOPort()
+s32 cellVoiceDisconnectIPortFromOPort(u32 ips, u32 ops)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceDisconnectIPortFromOPort(ips=%d, ops=%d)", ips, ops);
 	return CELL_OK;
 }
 
 s32 cellVoiceEnd()
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceEnd()");
 	return CELL_OK;
 }
 
-s32 cellVoiceGetBitRate()
+s32 cellVoiceGetBitRate(u32 portId, vm::ptr<u32> bitrate)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceGetBitRate(portId=%d, bitrate=*0x%x)", portId, bitrate);
 	return CELL_OK;
 }
 
-s32 cellVoiceGetMuteFlag()
+s32 cellVoiceGetMuteFlag(u32 portId, vm::ptr<u16> bMuted)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceGetMuteFlag(portId=%d, bMuted=*0x%x)", portId, bMuted);
 	return CELL_OK;
 }
 
-s32 cellVoiceGetPortAttr()
+s32 cellVoiceGetPortAttr(u32 portId, s32 attr, vm::ptr<void> attrValue)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceGetPortAttr(portId=%d, attr=*0x%x, attrValue=*0x%x)", portId, attr, attrValue);
 	return CELL_OK;
 }
 
-s32 cellVoiceGetPortInfo()
+s32 cellVoiceGetPortInfo(u32 portId, vm::ptr<s32> attr)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceGetPortInfo(portId=%d, attr=*0x%x)", portId, attr);
 	return CELL_OK;
 }
 
-s32 cellVoiceGetSignalState()
+s32 cellVoiceGetSignalState(u32 portId, s32 attr, vm::ptr<void> attrValue)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceGetSignalState(portId=%d, attr=*0x%x, attrValue=*0x%x)", portId, attr, attrValue);
 	return CELL_OK;
 }
 
-s32 cellVoiceGetVolume()
+s32 cellVoiceGetVolume(u32 portId, vm::ptr<f32> volume)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceGetVolume(portId=%d, volume=*0x%x)", portId, volume);
 	return CELL_OK;
 }
 
-s32 cellVoiceInit()
+s32 cellVoiceInit(vm::ptr<CellVoiceInitParam> pArg)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceInit(pArg=*0x%x)", pArg);
 	return CELL_OK;
 }
 
-s32 cellVoiceInitEx()
+s32 cellVoiceInitEx(vm::ptr<CellVoiceInitParam> pArg)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceInitEx(pArg=*0x%x)", pArg);
 	return CELL_OK;
 }
 
-s32 cellVoicePausePort()
+s32 cellVoicePausePort(u32 portId)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoicePausePort(portId=%d)", portId);
 	return CELL_OK;
 }
 
 s32 cellVoicePausePortAll()
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoicePausePortAll()");
 	return CELL_OK;
 }
 
@@ -109,39 +109,39 @@ s32 cellVoiceRemoveNotifyEventQueue()
 	return CELL_OK;
 }
 
-s32 cellVoiceResetPort()
+s32 cellVoiceResetPort(u32 portId)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceResetPort(portId=%d)", portId);
 	return CELL_OK;
 }
 
-s32 cellVoiceResumePort()
+s32 cellVoiceResumePort(u32 portId)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceResumePort(portId=%d)", portId);
 	return CELL_OK;
 }
 
 s32 cellVoiceResumePortAll()
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceResumePortAll()");
 	return CELL_OK;
 }
 
-s32 cellVoiceSetBitRate()
+s32 cellVoiceSetBitRate(u32 portId, s32 bitrate)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceSetBitRate(portId=%d, bitrate=*0x%x)", portId, bitrate);
 	return CELL_OK;
 }
 
-s32 cellVoiceSetMuteFlag()
+s32 cellVoiceSetMuteFlag(u32 portId, u16 bMuted)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceSetMuteFlagAll(portId=%d, bMuted=%d)", portId, bMuted);
 	return CELL_OK;
 }
 
-s32 cellVoiceSetMuteFlagAll()
+s32 cellVoiceSetMuteFlagAll(u16 bMuted)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceSetMuteFlagAll(bMuted=%d)", bMuted);
 	return CELL_OK;
 }
 
@@ -151,63 +151,63 @@ s32 cellVoiceSetNotifyEventQueue()
 	return CELL_OK;
 }
 
-s32 cellVoiceSetPortAttr()
+s32 cellVoiceSetPortAttr(u32 portId, s32 attr, vm::ptr<void> attrValue)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceSetPortAttr(portId=%d, attr=*0x%x, attrValue=*0x%x)", portId, attr, attrValue);
 	return CELL_OK;
 }
 
-s32 cellVoiceSetVolume()
+s32 cellVoiceSetVolume(u32 portId, f32 volume)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceSetVolume(portId=%d, volume=%f)", portId, volume);
 	return CELL_OK;
 }
 
 s32 cellVoiceStart()
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceStart()");
 	return CELL_OK;
 }
 
-s32 cellVoiceStartEx()
+s32 cellVoiceStartEx(vm::ptr<CellVoiceStartParam> pArg)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceStartEx(pArg=*0x%x)", pArg);
 	return CELL_OK;
 }
 
 s32 cellVoiceStop()
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceStop()");
 	return CELL_OK;
 }
 
-s32 cellVoiceUpdatePort()
+s32 cellVoiceUpdatePort(u32 portId, vm::cptr<CellVoiceStartParam> pArg)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceUpdatePort(portId=%d, pArg=*0x%x)", portId, pArg);
 	return CELL_OK;
 }
 
-s32 cellVoiceWriteToIPort()
+s32 cellVoiceWriteToIPort(u32 ips, vm::cptr<void> data, vm::ptr<u32> size)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceWriteToIPort(ips=%d, data=*0x%x, size=*0x%x)", ips, data, size);
 	return CELL_OK;
 }
 
-s32 cellVoiceWriteToIPortEx()
+s32 cellVoiceWriteToIPortEx(u32 ips, vm::cptr<void> data, vm::ptr<u32> size, u32 numFrameLost)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceWriteToIPortEx(ips=%d, data=*0x%x, size=*0x%x, numFrameLost=%d)", ips, data, size, numFrameLost);
 	return CELL_OK;
 }
 
-s32 cellVoiceWriteToIPortEx2()
+s32 cellVoiceWriteToIPortEx2(u32 ips, vm::cptr<void> data, vm::ptr<u32> size, s16 frameGaps)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceWriteToIPortEx(ips=%d, data=*0x%x, size=*0x%x, frameGaps=%d)", ips, data, size, frameGaps);
 	return CELL_OK;
 }
 
-s32 cellVoiceReadFromOPort()
+s32 cellVoiceReadFromOPort(u32 ops, vm::ptr<void> data, vm::ptr<u32> size)
 {
-	UNIMPLEMENTED_FUNC(cellVoice);
+	cellVoice.todo("cellVoiceReadFromOPort(ops=%d, data=*0x%x, size=*0x%x)", ops, data, size);
 	return CELL_OK;
 }
 
