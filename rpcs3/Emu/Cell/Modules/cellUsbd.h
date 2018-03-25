@@ -41,3 +41,34 @@ enum
 	USBD_HC_CC_BABBLE  = 0x4,
 	USBD_HC_CC_DATABUF = 0x8,
 };
+
+enum
+{
+	CELL_USBD_MAX_ISOCH_PACKETS = 8, // ?
+};
+
+struct CellUsbdIsochPswLen
+{
+	u16 len:11;
+	u16 reserved:1;
+	u16 PSW:4;
+};
+
+struct CellUsbdIsochRequest
+{
+	vm::ptr<void> buffer_base;
+	s32 relative_start_frame;
+	s32 num_packets;
+	vm::ptr<CellUsbdIsochPswLen[CELL_USBD_MAX_ISOCH_PACKETS]> Packets;
+};
+
+struct CellUsbdLddOps
+{
+	vm::cptr<u8> name;
+	using probe = s32(s32 dev_id);
+	using attach = s32(s32 dev_id);
+	using detach = s32(s32 dev_id);
+};
+
+using CellUsbdDoneCallback = void(s32 result, s32 count, vm::ptr<void> arg);
+using CellUsbdIsochDoneCallback = void(s32 result, vm::ptr<CellUsbdIsochRequest> req, vm::ptr<void> arg);
