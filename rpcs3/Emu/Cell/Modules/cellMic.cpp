@@ -20,93 +20,93 @@ s32 cellMicEnd()
 	return CELL_OK;
 }
 
-s32 cellMicOpen()
+s32 cellMicOpen(s32 dev_num, s32 samprate)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicOpen(dev_num=%d, samprate=%d)", dev_num, samprate);
 	return CELL_OK;
 }
 
-s32 cellMicClose()
+s32 cellMicClose(s32 dev_num)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicClose(dev_num=%d)", dev_num);
 	return CELL_OK;
 }
 
-s32 cellMicGetDeviceGUID()
+s32 cellMicGetDeviceGUID(s32 dev_num, vm::ptr<u32> ptr_guid)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicGetDeviceGUID(dev_num=%d, ptr_guid=*0x%x)", dev_num, ptr_guid);
 	return CELL_OK;
 }
 
-s32 cellMicGetType()
+s32 cellMicGetType(s32 dev_num, vm::ptr<s32> ptr_type)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicGetType(dev_num=%d, ptr_type=*0x%x)", dev_num, ptr_type);
 	return CELL_OK;
 }
 
-s32 cellMicIsAttached()
+s32 cellMicIsAttached(s32 dev_num)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicIsAttached(dev_num=%d)", dev_num);
+	return 0;
+}
+
+s32 cellMicIsOpen(s32 dev_num)
+{
+	cellMic.todo("cellMicIsOpen(dev_num=%d)", dev_num);
+	return 0;
+}
+
+s32 cellMicGetDeviceAttr(s32 dev_num, u32 dev_attrib, vm::ptr<s32> arg1, vm::ptr<s32> arg2)
+{
+	cellMic.todo("cellMicGetDeviceAttr(dev_num=%d, dev_attrib=%d, arg1=*0x%x, arg2=*0x%x)", dev_num, dev_attrib, arg1, arg2);
 	return CELL_OK;
 }
 
-s32 cellMicIsOpen()
+s32 cellMicSetDeviceAttr(s32 dev_num, u32 dev_attrib, s32 arg1, s32 arg2)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicSetDeviceAttr(dev_num=%d, dev_attrib=%d, arg1=%d, arg2=%d)", dev_num, dev_attrib, arg1, arg2);
 	return CELL_OK;
 }
 
-s32 cellMicGetDeviceAttr()
+s32 cellMicGetSignalAttr(s32 dev_num, f32 sig_attrib, vm::ptr<void> value)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicGetSignalAttr(dev_num=%d, sig_attrib=%f, value=*0x%x)", dev_num, sig_attrib, value);
 	return CELL_OK;
 }
 
-s32 cellMicSetDeviceAttr()
+s32 cellMicSetSignalAttr(s32 dev_num, f32 sig_attrib, vm::ptr<void> value)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicSetSignalAttr(dev_num=%d, sig_attrib=%f, value=*0x%x)", dev_num, sig_attrib, value);
 	return CELL_OK;
 }
 
-s32 cellMicGetSignalAttr()
+s32 cellMicGetSignalState(s32 dev_num, s32 sig_state, vm::ptr<void> value)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicGetSignalState(dev_num=%d, sig_state=%d, value=*0x%x)", dev_num, sig_state, value);
 	return CELL_OK;
 }
 
-s32 cellMicSetSignalAttr()
+s32 cellMicStart(s32 dev_num)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicStart(dev_num=%d)", dev_num);
 	return CELL_OK;
 }
 
-s32 cellMicGetSignalState()
+s32 cellMicRead(s32 dev_num, vm::ptr<void> data, s32 max_bytes)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicRead(dev_num=%d, data=*0x%x, max_bytes=%d)", dev_num, data, max_bytes);
 	return CELL_OK;
 }
 
-s32 cellMicStart()
+s32 cellMicStop(s32 dev_num)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicStop(dev_num=%d)", dev_num);
 	return CELL_OK;
 }
 
-s32 cellMicRead()
+s32 cellMicReset(s32 dev_num)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
-	return CELL_OK;
-}
-
-s32 cellMicStop()
-{
-	UNIMPLEMENTED_FUNC(cellMic);
-	return CELL_OK;
-}
-
-s32 cellMicReset()
-{
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicReset(dev_num=%d)", dev_num);
 	return CELL_OK;
 }
 
@@ -128,57 +128,57 @@ s32 cellMicRemoveNotifyEventQueue()
 	return CELL_OK;
 }
 
-s32 cellMicOpenEx()
+s32 cellMicOpenEx(s32 dev_num, s32 raw_samprate, s32 raw_channel, s32 dsp_samprate, s32 bufms, s32 sigtype)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicOpenEx(dev_num=%d, raw_samprate=%d, raw_channel=%d, dsp_samprate=%d, bufms=%d, sigtype=%d)", dev_num, raw_samprate, raw_channel, dsp_samprate, bufms, sigtype);
 	return CELL_OK;
 }
 
-s32 cellMicStartEx()
+s32 cellMicStartEx(s32 dev_num, u32 iFlags)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicStartEx(dev_num=%d, iFlags=%d)", dev_num, iFlags);
 	return CELL_OK;
 }
 
-s32 cellMicGetFormatRaw()
+s32 cellMicGetFormatRaw(s32 dev_num, vm::ptr<CellMicInputFormatI> format)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicGetFormatRaw(dev_num=%d, format=*0x%x)", dev_num, format);
 	return CELL_OK;
 }
 
-s32 cellMicGetFormatAux()
+s32 cellMicGetFormatAux(s32 dev_num, vm::ptr<CellMicInputFormatI> format)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicGetFormatAux(dev_num=%d, format=*0x%x)", dev_num, format);
 	return CELL_OK;
 }
 
-s32 cellMicGetFormatDsp()
+s32 cellMicGetFormatDsp(s32 dev_num, vm::ptr<CellMicInputFormatI> format)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicGetFormatDsp(dev_num=%d, format=*0x%x)", dev_num, format);
 	return CELL_OK;
 }
 
-s32 cellMicOpenRaw()
+s32 cellMicOpenRaw(s32 dev_num, s32 samprate, s32 channel)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicOpenRaw(dev_num=%d, samprate=%d, channel=%d)", dev_num, samprate, channel);
 	return CELL_OK;
 }
 
-s32 cellMicReadRaw()
+s32 cellMicReadRaw(s32 dev_num, vm::ptr<void> data, s32 max_bytes)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicReadRaw(dev_num=%d, data=*0x%x, max_bytes=%d)", dev_num, data, max_bytes);
 	return CELL_OK;
 }
 
-s32 cellMicReadAux()
+s32 cellMicReadAux(s32 dev_num, vm::ptr<void> data, s32 max_bytes)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicReadAux(dev_num=%d, data=*0x%x, max_bytes=%d)", dev_num, data, max_bytes);
 	return CELL_OK;
 }
 
-s32 cellMicReadDsp()
+s32 cellMicReadDsp(s32 dev_num, vm::ptr<void> data, s32 max_bytes)
 {
-	UNIMPLEMENTED_FUNC(cellMic);
+	cellMic.todo("cellMicReadDsp(dev_num=%d, data=*0x%x, max_bytes=%d)", dev_num, data, max_bytes);
 	return CELL_OK;
 }
 

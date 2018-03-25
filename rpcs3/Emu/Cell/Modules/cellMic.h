@@ -23,3 +23,12 @@ enum
 	CELL_MICIN_ERROR_FATAL = 0x8014010f,
 	CELL_MICIN_ERROR_DEVICE_NOT_SUPPORT = 0x80140110,
 };
+
+struct CellMicInputFormatI
+{
+	u8 bNrChannels;
+	u8 bSubframeSize;
+	u8 bBitResolution;
+	u8 bDataType;
+	u32 uiSampRate;
+};
