@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Emu/Cell/PPUModule.h"
 
+#include "cellPngEnc.h"
+
 logs::channel cellPngEnc("cellPngEnc");
 
 // Error Codes
@@ -14,57 +16,57 @@ enum
 	CELL_PNGENC_ERROR_FATAL = 0x80611296,
 };
 
-s32 cellPngEncQueryAttr()
+s32 cellPngEncQueryAttr(vm::cptr<CellPngEncConfig> config, vm::ptr<CellPngEncAttr> attr)
 {
-	UNIMPLEMENTED_FUNC(cellPngEnc);
+	cellPngEnc.todo("cellPngEncQueryAttr(config=*0x%x, attr=*0x%x)", config, attr);
 	return CELL_OK;
 }
 
-s32 cellPngEncOpen()
+s32 cellPngEncOpen(vm::cptr<CellPngEncConfig> config, vm::cptr<CellPngEncResource> resource, vm::pptr<void> handle)
 {
-	UNIMPLEMENTED_FUNC(cellPngEnc);
+	cellPngEnc.todo("cellPngEncOpen(config=*0x%x, resource=*0x%x, handle=*0x%x)", config, resource, handle);
 	return CELL_OK;
 }
 
-s32 cellPngEncOpenEx()
+s32 cellPngEncOpenEx(vm::cptr<CellPngEncConfig> config, vm::cptr<CellPngEncResourceEx> resourceEx, vm::pptr<void> handle)
 {
-	UNIMPLEMENTED_FUNC(cellPngEnc);
+	cellPngEnc.todo("cellPngEncOpenEx(config=*0x%x, resourceEx=*0x%x, handle=*0x%x)", config, resourceEx, handle);
 	return CELL_OK;
 }
 
-s32 cellPngEncClose()
+s32 cellPngEncClose(vm::ptr<void> handle)
 {
-	UNIMPLEMENTED_FUNC(cellPngEnc);
+	cellPngEnc.todo("cellPngEncClose(handle=*0x%x)", handle);
 	return CELL_OK;
 }
 
-s32 cellPngEncWaitForInput()
+s32 cellPngEncWaitForInput(vm::ptr<void> handle, b8 block)
 {
-	UNIMPLEMENTED_FUNC(cellPngEnc);
+	cellPngEnc.todo("cellPngEncWaitForInput(handle=*0x%x, block=%d)", handle, block);
 	return CELL_OK;
 }
 
-s32 cellPngEncEncodePicture()
+s32 cellPngEncEncodePicture(vm::ptr<void> handle, vm::cptr<CellPngEncPicture> picture, vm::cptr<CellPngEncEncodeParam> encodeParam, vm::cptr<CellPngEncOutputParam> outputParam)
 {
-	UNIMPLEMENTED_FUNC(cellPngEnc);
+	cellPngEnc.todo("cellPngEncEncodePicture(handle=*0x%x, picture=*0x%x, encodeParam=*0x%x, outputParam=*0x%x)", handle, picture, encodeParam, outputParam);
 	return CELL_OK;
 }
 
-s32 cellPngEncWaitForOutput()
+s32 cellPngEncWaitForOutput(vm::ptr<void> handle, vm::ptr<u32> streamInfoNum, b8 block)
 {
-	UNIMPLEMENTED_FUNC(cellPngEnc);
+	cellPngEnc.todo("cellPngEncWaitForOutput(handle=*0x%x, streamInfoNum=*0x%x, block=%d)", handle, streamInfoNum, block);
 	return CELL_OK;
 }
 
-s32 cellPngEncGetStreamInfo()
+s32 cellPngEncGetStreamInfo(vm::ptr<void> handle, vm::ptr<CellPngEncStreamInfo> streamInfo)
 {
-	UNIMPLEMENTED_FUNC(cellPngEnc);
+	cellPngEnc.todo("cellPngEncGetStreamInfo(handle=*0x%x, streamInfo=*0x%x)", handle, streamInfo);
 	return CELL_OK;
 }
 
-s32 cellPngEncReset()
+s32 cellPngEncReset(vm::ptr<void> handle)
 {
-	UNIMPLEMENTED_FUNC(cellPngEnc);
+	cellPngEnc.todo("cellPngEncReset(handle=*0x%x)", handle);
 	return CELL_OK;
 }
 

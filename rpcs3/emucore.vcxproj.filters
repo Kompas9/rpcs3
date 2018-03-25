@@ -1435,5 +1435,8 @@
     <ClInclude Include="Emu\Cell\Modules\cellJpgEnc.h">
       <Filter>Emu\Cell\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Emu\Cell\Modules\cellPngEnc.h">
+      <Filter>Emu\Cell\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
