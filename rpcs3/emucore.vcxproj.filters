@@ -1438,5 +1438,8 @@
     <ClInclude Include="Emu\Cell\Modules\cellPngEnc.h">
       <Filter>Emu\Cell\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Emu\Cell\Modules\cellUsbpspcm.h">
+      <Filter>Emu\Cell\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -400,6 +400,7 @@
     <ClInclude Include="Emu\Cell\Modules\cellJpgEnc.h" />
     <ClInclude Include="Emu\Cell\Modules\cellOskDialog.h" />
     <ClInclude Include="Emu\Cell\Modules\cellPngEnc.h" />
+    <ClInclude Include="Emu\Cell\Modules\cellUsbpspcm.h" />
     <ClInclude Include="Emu\Cell\Modules\cellVoice.h" />
     <ClInclude Include="Emu\Cell\PPUAnalyser.h" />
     <ClInclude Include="Emu\Cell\PPUTranslator.h" />

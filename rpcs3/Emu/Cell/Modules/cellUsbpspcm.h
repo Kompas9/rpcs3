@@ -1,0 +1,44 @@
+#pragma once
+
+// Return Codes
+enum
+{
+	CELL_USBPSPCM_ERROR_NOT_INITIALIZED = 0x80110401,
+	CELL_USBPSPCM_ERROR_ALREADY = 0x80110402,
+	CELL_USBPSPCM_ERROR_INVALID = 0x80110403,
+	CELL_USBPSPCM_ERROR_NO_MEMORY = 0x80110404,
+	CELL_USBPSPCM_ERROR_BUSY = 0x80110405,
+	CELL_USBPSPCM_ERROR_INPROGRESS = 0x80110406,
+	CELL_USBPSPCM_ERROR_NO_SPACE = 0x80110407,
+	CELL_USBPSPCM_ERROR_CANCELED = 0x80110408,
+	CELL_USBPSPCM_ERROR_RESETTING = 0x80110409,
+	CELL_USBPSPCM_ERROR_RESET_END = 0x8011040A,
+	CELL_USBPSPCM_ERROR_CLOSED = 0x8011040B,
+	CELL_USBPSPCM_ERROR_NO_DATA = 0x8011040C,
+};
+
+enum
+{
+	CELL_USBPSPCM_MAX_TITLE_LENGTH = 64,
+};
+
+struct CellUsbPspcmInitParam
+{
+	u64 size;
+	s32 numDev;
+	s32 numCh;
+	vm::ptr<void> pool;
+	u64 poolSize;
+	s32 priority;
+	u64 stackSize;
+	vm::cptr<u8> defaultTitle;
+};
+
+struct CellUsbPspcmConnectStat
+{
+	s32 addr;
+	u32 stat;
+	vm::ptr<u8[CELL_USBPSPCM_MAX_TITLE_LENGTH]> title;
+};
+
+typedef int (CellUsbPspcmConnectFunc)(vm::cptr<CellUsbPspcmConnectStat> pStat);
