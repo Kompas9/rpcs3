@@ -95,3 +95,30 @@ struct CellSync2Notifier
 	vm::bptr<s32(u64, u64)> sendSignal;
 	be_t<u64> callbackArg;
 };
+
+struct CellSync2ThreadConfig
+{
+	vm::bptr<CellSync2CallerThreadType> callerThreadType;
+	vm::bpptr<CellSync2Notifier> notifierTable;
+	be_t<u32> numNotifier;
+};
+
+struct CellSync2Mutex
+{
+
+};
+
+struct CellSync2Cond
+{
+
+};
+
+struct CellSync2Semaphore
+{
+
+};
+
+struct CellSync2Queue
+{
+
+};
