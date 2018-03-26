@@ -114,9 +114,30 @@ error_code sceNpSnsFbAbortHandle(u32 handle)
 	return CELL_OK;
 }
 
-error_code sceNpSnsFbGetAccessToken(u32 handle, vm::cptr<SceNpSnsFbAccessTokenParam> param, vm::ptr<SceNpSnsFbAccessTokenResult> result)
+error_code sceNpSnsFbGetAccessToken(SceNpSnsFbHandle handle, vm::cptr<SceNpSnsFbAccessTokenParam> param, vm::ptr<SceNpSnsFbAccessTokenResult> result)
 {
 	sceNpSns.todo("sceNpSnsFbGetAccessToken(handle=%d, param=*0x%x, result=*0x%x)", handle, param, result);
+
+	if (handle == SCE_NP_SNS_FB_INVALID_HANDLE || handle > SCE_NP_SNS_FB_HANDLE_SLOT_MAX || !param || !result || !param->fb_app_id)
+	{
+		return SCE_NP_SNS_ERROR_INVALID_ARGUMENT;
+	}
+
+	const auto sfh = idm::get<sns_fb_handle_t>(handle);
+
+	if (!sfh)
+	{
+		return SCE_NP_SNS_FB_ERROR_UNKNOWN_HANDLE;
+	}
+
+	// TODO
+
+	return CELL_OK;
+}
+
+s32 sceNpSnsFbGetLongAccessToken(SceNpSnsFbHandle handle, vm::cptr<SceNpSnsFbAccessTokenParam> param, vm::ptr<SceNpSnsFbLongAccessTokenResult> result)
+{
+	sceNpSns.todo("sceNpSnsFbGetLongAccessToken(handle=%d, param=*0x%x, result=*0x%x)", handle, param, result);
 
 	if (handle == SCE_NP_SNS_FB_INVALID_HANDLE || handle > SCE_NP_SNS_FB_HANDLE_SLOT_MAX || !param || !result || !param->fb_app_id)
 	{
@@ -154,12 +175,6 @@ s32 sceNpSnsFbCheckConfig()
 }
 
 s32 sceNpSnsFbLoadThrottle()
-{
-	UNIMPLEMENTED_FUNC(sceNpSns);
-	return CELL_OK;
-}
-
-s32 sceNpSnsFbGetLongAccessToken()
 {
 	UNIMPLEMENTED_FUNC(sceNpSns);
 	return CELL_OK;

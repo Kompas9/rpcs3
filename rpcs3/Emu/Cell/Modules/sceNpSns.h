@@ -28,11 +28,14 @@ enum sceNpSnsError : u32
 // Constants for SNS functions
 enum
 {
-	SCE_NP_SNS_FB_INVALID_HANDLE          = 0,
-	SCE_NP_SNS_FB_HANDLE_SLOT_MAX         = 4,
-	SCE_NP_SNS_FB_PERMISSIONS_LENGTH_MAX  = 255,
-	SCE_NP_SNS_FB_ACCESS_TOKEN_LENGTH_MAX = 255
+	SCE_NP_SNS_FB_INVALID_HANDLE               = 0,
+	SCE_NP_SNS_FB_HANDLE_SLOT_MAX              = 4,
+	SCE_NP_SNS_FB_PERMISSIONS_LENGTH_MAX       = 255,
+	SCE_NP_SNS_FB_ACCESS_TOKEN_LENGTH_MAX      = 255,
+	SCE_NP_SNS_FB_LONG_ACCESS_TOKEN_LENGTH_MAX = 4096,
 };
+
+using SceNpSnsFbHandle = u32;
 
 struct sns_fb_handle_t
 {
@@ -60,4 +63,10 @@ struct SceNpSnsFbAccessTokenResult
 {
 	be_t<u64> expiration;
 	char access_token[SCE_NP_SNS_FB_ACCESS_TOKEN_LENGTH_MAX + 1];
+};
+
+struct SceNpSnsFbLongAccessTokenResult
+{
+	be_t<u64> expiration;
+	char access_token[SCE_NP_SNS_FB_LONG_ACCESS_TOKEN_LENGTH_MAX + 1];
 };
