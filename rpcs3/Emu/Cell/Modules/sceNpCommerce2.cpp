@@ -5,15 +5,19 @@
 
 logs::channel sceNpCommerce2("sceNpCommerce2");
 
-s32 sceNpCommerce2ExecuteStoreBrowse()
+s32 sceNpCommerce2ExecuteStoreBrowse(s32 targetType, vm::cptr<char> targetId, s32 userdata)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2ExecuteStoreBrowse(targetType=%d, targetId=%s, userdata=%d)", targetType, targetId, userdata);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetStoreBrowseUserdata()
+s32 sceNpCommerce2GetStoreBrowseUserdata(vm::ptr<int> userdata)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetStoreBrowseUserdata(userdata=*0x%x)", userdata);
+
+	if (!userdata)
+		return SCE_NP_COMMERCE2_ERROR_INVALID_ARGUMENT;
+
 	return CELL_OK;
 }
 
@@ -31,276 +35,280 @@ s32 sceNpCommerce2Term()
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2CreateCtx()
+s32 sceNpCommerce2CreateCtx(u32 version, vm::cptr<SceNpId> npId, vm::ptr<SceNpCommerce2Handler> handler, vm::ptr<void> arg, vm::ptr<u32> ctx_id)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2ExecuteStoreBrowse(version=%d, npId=*0x%x, handler=*0x%x, arg=*0x%x, ctx_id=*0x%x)", version, npId, handler, arg, ctx_id);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2DestroyCtx()
+s32 sceNpCommerce2DestroyCtx(u32 ctx_id)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2DestroyCtx(ctx_id=%d)", ctx_id);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2EmptyStoreCheckStart()
+s32 sceNpCommerce2EmptyStoreCheckStart(u32 ctx_id, s32 store_check_type, vm::cptr<char> target_id)
 {
-	fmt::throw_exception("Unimplemented" HERE);
-}
-
-s32 sceNpCommerce2EmptyStoreCheckAbort()
-{
-	fmt::throw_exception("Unimplemented" HERE);
-}
-
-s32 sceNpCommerce2EmptyStoreCheckFinish()
-{
-	fmt::throw_exception("Unimplemented" HERE);
-}
-
-s32 sceNpCommerce2CreateSessionStart()
-{
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2EmptyStoreCheckStart(ctx_id=%d, store_check_type=%d, target_id=%s)", ctx_id, store_check_type, target_id);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2CreateSessionAbort()
+s32 sceNpCommerce2EmptyStoreCheckAbort(u32 ctx_id)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2EmptyStoreCheckAbort(ctx_id=%d)", ctx_id);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2CreateSessionFinish()
+s32 sceNpCommerce2EmptyStoreCheckFinish(u32 ctx_id, vm::ptr<int> is_empty)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2EmptyStoreCheckFinish(ctx_id=%d, is_empty=*0x%x)", ctx_id, is_empty);
+
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetCategoryContentsCreateReq()
+s32 sceNpCommerce2CreateSessionStart(u32 ctx_id)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2CreateSessionStart(ctx_id=%d)", ctx_id);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetCategoryContentsStart()
+s32 sceNpCommerce2CreateSessionAbort(u32 ctx_id)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2CreateSessionAbort(ctx_id=%d)", ctx_id);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetCategoryContentsGetResult()
+s32 sceNpCommerce2CreateSessionFinish(u32 ctx_id, vm::ptr<SceNpCommerce2SessionInfo> sessionInfo)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2CreateSessionFinish(ctx_id=%d, sessionInfo=*0x%x)", ctx_id, sessionInfo);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2InitGetCategoryContentsResult()
+s32 sceNpCommerce2GetCategoryContentsCreateReq(u32 ctx_id, vm::ptr<u32> req_id)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetCategoryContentsCreateReq(ctx_id=%d, req_id=*0x%x)", ctx_id, req_id);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetCategoryInfo()
+s32 sceNpCommerce2GetCategoryContentsStart(u32 req_id, vm::cptr<char> categoryId, u32 startPosition, u32 maxCountOfResults)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetCategoryContentsStart(req_id=%d, categoryId=%s, startPosition=%d, maxCountOfResults=%d)", req_id, categoryId, startPosition, maxCountOfResults);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetContentInfo()
+s32 sceNpCommerce2GetCategoryContentsGetResult(u32 req_id, vm::ptr<void> buf, u64 buf_size, vm::ptr<u64> fill_size)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetCategoryContentsGetResult(req_id=%d, buf=*0x%x, buf_size=%d, fill_size=*0x%x)", req_id, buf, buf_size, fill_size);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetCategoryInfoFromContentInfo()
+s32 sceNpCommerce2InitGetCategoryContentsResult(vm::ptr<SceNpCommerce2GetCategoryContentsResult> result, vm::ptr<void> data, u64 data_size)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2InitGetCategoryContentsResult(result=*0x%x, data=*0x%x, data_size=%d)", result, data, data_size);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetGameProductInfoFromContentInfo()
+s32 sceNpCommerce2GetCategoryInfo(vm::cptr<SceNpCommerce2GetCategoryContentsResult> result, vm::ptr<SceNpCommerce2CategoryInfo> categoryInfo)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetCategoryInfo(result=*0x%x, categoryInfo=*0x%x)", result, categoryInfo);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2DestroyGetCategoryContentsResult()
+s32 sceNpCommerce2GetContentInfo(vm::cptr<SceNpCommerce2GetCategoryContentsResult> result, u32 index, vm::ptr<SceNpCommerce2ContentInfo> contentInfo)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetContentInfo(result=*0x%x, index=%d, contentInfo=*0x%x)", result, index, contentInfo);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetProductInfoCreateReq()
+s32 sceNpCommerce2GetCategoryInfoFromContentInfo(vm::cptr<SceNpCommerce2ContentInfo> contentInfo, vm::ptr<SceNpCommerce2CategoryInfo> categoryInfo)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetCategoryInfoFromContentInfo(contentInfo=*0x%x, categoryInfo=*0x%x)", contentInfo, categoryInfo);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetProductInfoStart()
+s32 sceNpCommerce2GetGameProductInfoFromContentInfo(vm::cptr<SceNpCommerce2ContentInfo> contentInfo, vm::ptr<SceNpCommerce2GameProductInfo> gameProductInfo)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetGameProductInfoFromContentInfo(contentInfo=*0x%x, gameProductInfo=*0x%x)", contentInfo, gameProductInfo);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetProductInfoGetResult()
+s32 sceNpCommerce2DestroyGetCategoryContentsResult(vm::ptr<SceNpCommerce2GetCategoryContentsResult> result)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2DestroyGetCategoryContentsResult(result=*0x%x)", result);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2InitGetProductInfoResult()
+s32 sceNpCommerce2GetProductInfoCreateReq(u32 ctx_id, vm::ptr<u32> req_id)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetProductInfoCreateReq(ctx_id=%d, req_id=*0x%x)", ctx_id, req_id);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetGameProductInfo()
+s32 sceNpCommerce2GetProductInfoStart(u32 req_id, vm::cptr<char> categoryId, vm::cptr<char> productId)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetProductInfoStart(req_id=%d, categoryId=%s, productId=%s)", req_id, categoryId, productId);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2DestroyGetProductInfoResult()
+s32 sceNpCommerce2GetProductInfoGetResult(u32 req_id, vm::ptr<void> buf, u64 buf_size, vm::ptr<u64> fill_size)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetProductInfoGetResult(req_id=%d, buf=*0x%x, buf_size=%d, fill_size=*0x%x)", req_id, buf, buf_size, fill_size);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetProductInfoListCreateReq()
+s32 sceNpCommerce2InitGetProductInfoResult(vm::ptr<SceNpCommerce2GetProductInfoResult> result, vm::ptr<void> data, u64 data_size)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2InitGetProductInfoResult(result=*0x%x, data=*0x%x, data_size=%d)", result, data, data_size);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetProductInfoListStart()
+s32 sceNpCommerce2GetGameProductInfo(vm::cptr<SceNpCommerce2GetProductInfoResult> result, vm::ptr<SceNpCommerce2GameProductInfo> gameProductInfo)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetGameProductInfo(result=*0x%x, gameProductInfo=*0x%x)", result, gameProductInfo);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetProductInfoListGetResult()
+s32 sceNpCommerce2DestroyGetProductInfoResult(vm::ptr<SceNpCommerce2GetProductInfoResult> result)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2DestroyGetProductInfoResult(result=*0x%x)", result);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2InitGetProductInfoListResult()
+s32 sceNpCommerce2GetProductInfoListCreateReq(u32 ctx_id, vm::ptr<u32> req_id)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetProductInfoListCreateReq(ctx_id=%d, req_id=*0x%x)", ctx_id, req_id);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetGameProductInfoFromGetProductInfoListResult()
+s32 sceNpCommerce2GetProductInfoListStart(u32 req_id, vm::cptr<char[]> productIds, u32 productNum)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetProductInfoListStart(req_id=%d, productIds=*0x%x, productNum=%d)", req_id, productIds, productNum);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2DestroyGetProductInfoListResult()
+s32 sceNpCommerce2GetProductInfoListGetResult(u32 req_id, vm::ptr<void> buf, u64 buf_size, vm::ptr<u64> fill_size)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetProductInfoListGetResult(req_id=%d, buf=*0x%x, buf_size=%d, fill_size=*0x%x)", req_id, buf, buf_size, fill_size);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetContentRatingInfoFromGameProductInfo()
+s32 sceNpCommerce2InitGetProductInfoListResult(vm::ptr<SceNpCommerce2GetProductInfoListResult> result, vm::ptr<void> data, u64 data_size)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2InitGetProductInfoListResult(result=*0x%x, data=*0x%x, data_size=%d)", result, data, data_size);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetContentRatingInfoFromCategoryInfo()
+s32 sceNpCommerce2GetGameProductInfoFromGetProductInfoListResult(vm::cptr<SceNpCommerce2GetProductInfoListResult> result, u32 index, vm::ptr<SceNpCommerce2GameProductInfo> gameProductInfo)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetGameProductInfoFromGetProductInfoListResult(result=*0x%x, index=%d, data=*0x%x)", result, index, gameProductInfo);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetContentRatingDescriptor()
+s32 sceNpCommerce2DestroyGetProductInfoListResult(vm::ptr<SceNpCommerce2GetProductInfoListResult> result)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2DestroyGetProductInfoListResult(result=*0x%x)", result);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetGameSkuInfoFromGameProductInfo()
+s32 sceNpCommerce2GetContentRatingInfoFromGameProductInfo(vm::cptr<SceNpCommerce2GameProductInfo> gameProductInfo, vm::ptr<SceNpCommerce2ContentRatingInfo> contentRatingInfo)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetContentRatingInfoFromGameProductInfo(gameProductInfo=*0x%x, contentRatingInfo=*0x%x)", gameProductInfo, contentRatingInfo);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetPrice()
+s32 sceNpCommerce2GetContentRatingInfoFromCategoryInfo(vm::cptr<SceNpCommerce2CategoryInfo> categoryInfo, vm::ptr<SceNpCommerce2ContentRatingInfo> contentRatingInfo)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetContentRatingInfoFromCategoryInfo(categoryInfo=*0x%x, contentRatingInfo=*0x%x)", categoryInfo, contentRatingInfo);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2DoCheckoutStartAsync()
+s32 sceNpCommerce2GetContentRatingDescriptor(vm::cptr<SceNpCommerce2ContentRatingInfo> contentRatingInfo, u32 index, vm::ptr<SceNpCommerce2ContentRatingDescriptor> contentRatingDescriptor)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetContentRatingDescriptor(contentRatingInfo=*0x%x, index=%d, contentRatingDescriptor=*0x%x)", contentRatingInfo, index, contentRatingDescriptor);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2DoCheckoutFinishAsync()
+s32 sceNpCommerce2GetGameSkuInfoFromGameProductInfo(vm::cptr<SceNpCommerce2GameProductInfo> gameProductInfo, u32 index, vm::ptr<SceNpCommerce2GameSkuInfo> gameSkuInfo)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetGameSkuInfoFromGameProductInfo(gameProductInfo=*0x%x, index=%d, gameSkuInfo=*0x%x)", gameProductInfo, index, gameSkuInfo);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2DoProductBrowseStartAsync()
+s32 sceNpCommerce2GetPrice(u32 ctx_id, vm::ptr<char> buf, u64 buflen, u32 price)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetPrice(ctx_id=%d, buf=*0x%x, buflen=%d, price=%d)", ctx_id, buf, buflen, price);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2DoProductBrowseFinishAsync()
+s32 sceNpCommerce2DoCheckoutStartAsync(u32 ctx_id, vm::cptr<char[]> sku_ids, u32 sku_num, u32 container)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2DoCheckoutStartAsync(ctx_id=%d, sku_ids=*0x%x, sku_num=%d, container=%d)", ctx_id, sku_ids, sku_num, container);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2DoDlListStartAsync()
+s32 sceNpCommerce2DoCheckoutFinishAsync(u32 ctx_id)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2DoCheckoutFinishAsync(ctx_id=%d)", ctx_id);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2DoDlListFinishAsync()
+s32 sceNpCommerce2DoProductBrowseStartAsync(u32 ctx_id, vm::cptr<char> product_id, u32 container, vm::cptr<SceNpCommerce2ProductBrowseParam> param)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2DoProductBrowseStartAsync(ctx_id=%d, product_id=*0x%x, container=%d, param=*0x%x)", ctx_id, product_id, container, param);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2DoProductCodeStartAsync()
+s32 sceNpCommerce2DoProductBrowseFinishAsync(u32 ctx_id)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2DoProductBrowseFinishAsync(ctx_id=%d)", ctx_id);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2DoProductCodeFinishAsync()
+s32 sceNpCommerce2DoDlListStartAsync(u32 ctx_id, vm::cptr<char> service_id, vm::cptr<char[]> sku_ids, u32 sku_num, u32 container)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2DoDlListStartAsync(ctx_id=%d, service_id=%s, sku_ids=*0x%x, sku_num=%d, container=%d)", ctx_id, service_id, sku_ids, sku_num, container);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2GetBGDLAvailability()
+s32 sceNpCommerce2DoDlListFinishAsync(u32 ctx_id)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2DoDlListFinishAsync(ctx_id=%d)", ctx_id);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2SetBGDLAvailability()
+s32 sceNpCommerce2DoProductCodeStartAsync(u32 ctx_id, u32 container, vm::cptr<SceNpCommerce2ProductCodeParam> param)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2DoProductCodeStartAsync(ctx_id=%d, container=%d, param=*0x%x)", ctx_id, container, param);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2AbortReq()
+s32 sceNpCommerce2DoProductCodeFinishAsync(u32 ctx_id)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2DoProductCodeFinishAsync(ctx_id=%d)", ctx_id);
 	return CELL_OK;
 }
 
-s32 sceNpCommerce2DestroyReq()
+s32 sceNpCommerce2GetBGDLAvailability(vm::ptr<b8> bgdlAvailability)
 {
-	UNIMPLEMENTED_FUNC(sceNpCommerce2);
+	sceNpCommerce2.todo("sceNpCommerce2GetBGDLAvailability(bgdlAvailability=*0x%x)", bgdlAvailability);
+	return CELL_OK;
+}
+
+s32 sceNpCommerce2SetBGDLAvailability(b8 bgdlAvailability)
+{
+	sceNpCommerce2.todo("sceNpCommerce2SetBGDLAvailability(bgdlAvailability=%d)", bgdlAvailability);
+	return CELL_OK;
+}
+
+s32 sceNpCommerce2AbortReq(u32 req_id)
+{
+	sceNpCommerce2.todo("sceNpCommerce2AbortReq(req_id=%d)", req_id);
+	return CELL_OK;
+}
+
+s32 sceNpCommerce2DestroyReq(u32 req_id)
+{
+	sceNpCommerce2.todo("sceNpCommerce2DestroyReq(req_id=%d)", req_id);
 	return CELL_OK;
 }
 
