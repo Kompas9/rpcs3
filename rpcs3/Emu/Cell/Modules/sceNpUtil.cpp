@@ -6,27 +6,27 @@
 
 logs::channel sceNpUtil("sceNpUtil");
 
-s32 sceNpUtilBandwidthTestInitStart(u32 prio, size_t stack)
+s32 sceNpUtilBandwidthTestInitStart(u32 prio, u64 stack)
 {
-	UNIMPLEMENTED_FUNC(sceNpUtil);
+	sceNpUtil.todo("sceNpUtilBandwidthTestInitStart(prio=%d, stack=%d)", prio, stack);
 	return CELL_OK;
 }
 
 s32 sceNpUtilBandwidthTestGetStatus()
 {
-	UNIMPLEMENTED_FUNC(sceNpUtil);
+	sceNpUtil.todo("sceNpUtilBandwidthTestGetStatus()");
 	return CELL_OK;
 }
 
-s32 sceNpUtilBandwidthTestShutdown()
+s32 sceNpUtilBandwidthTestShutdown(vm::ptr<SceNpUtilBandwidthTestResult> result)
 {
-	UNIMPLEMENTED_FUNC(sceNpUtil);
+	sceNpUtil.todo("sceNpUtilBandwidthTestShutdown(result=*0x%x)", result);
 	return CELL_OK;
 }
 
 s32 sceNpUtilBandwidthTestAbort()
 {
-	UNIMPLEMENTED_FUNC(sceNpUtil);
+	sceNpUtil.todo("sceNpUtilBandwidthTestAbort()");
 	return CELL_OK;
 }
 
