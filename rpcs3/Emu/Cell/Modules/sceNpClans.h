@@ -112,6 +112,11 @@ enum
 // Request handle for clan API
 using SceNpClansRequestHandle = vm::ptr<struct SceNpClansRequest>;
 
+using SceNpClanId = u32;
+using SceNpClansRole = u32;
+using SceNpClansMessageId = u32;
+using SceNpClansMemberStatus = s32;
+
 // Paging request structure
 struct SceNpClansPagingRequest
 {
