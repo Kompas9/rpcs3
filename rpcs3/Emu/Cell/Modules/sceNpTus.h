@@ -11,9 +11,25 @@ enum
 	SCE_NP_TUS_MAX_CTX_NUM = 32,
 	SCE_NP_TUS_MAX_SLOT_NUM_PER_TRANS = 64,
 	SCE_NP_TUS_MAX_USER_NUM_PER_TRANS = 101,
+	SCE_NP_TUS_MAX_SELECTED_FRIENDS_NUM = 100,
 };
 
-SceNpOnlineId SceNpTusVirtualUserId;
+enum SceNpTssStatusCodeType
+{
+	SCE_NP_TSS_STATUS_TYPE_OK,
+	SCE_NP_TSS_STATUS_TYPE_PARTIAL,
+	SCE_NP_TSS_STATUS_TYPE_NOT_MODIFIED
+};
+
+enum SceNpTssIfType
+{
+	SCE_NP_TSS_IFTYPE_IF_MODIFIED_SINCE,
+	SCE_NP_TSS_IFTYPE_IF_RANGE
+};
+
+using SceNpTssSlotId = s32;
+using SceNpTusSlotId = s32;
+using SceNpTusVirtualUserId = SceNpOnlineId;
 
 // Structure for representing a TUS variable
 struct SceNpTusVariable
@@ -47,4 +63,48 @@ struct SceNpTusDataStatus
 	be_t<u32> dataSize;
 	u8 pad[4];
 	SceNpTusDataInfo info;
+};
+
+struct SceNpTusAddAndGetVariableOptParam
+{
+	u64 size;
+	vm::ptr<CellRtcTick> isLastChangedDate;
+	vm::ptr<SceNpId> isLastChangedAuthorId;
+};
+
+struct SceNpTusTryAndSetVariableOptParam
+{
+	u64 size;
+	vm::ptr<CellRtcTick> isLastChangedDate;
+	vm::ptr<SceNpId> isLastChangedAuthorId;
+	vm::ptr<s64> compareValue;
+};
+
+struct SceNpTusSetDataOptParam
+{
+	u64 size;
+	vm::ptr<CellRtcTick> isLastChangedDate;
+	vm::ptr<SceNpId> isLastChangedAuthorId;
+};
+
+struct SceNpTssDataStatus
+{
+	CellRtcTick lastModified;
+	s32 statusCodeType;
+	u64 contentLength;
+};
+
+struct SceNpTssIfModifiedSinceParam
+{
+	s32 ifType;
+	u8 padding[4];
+	CellRtcTick lastModified;
+};
+
+struct SceNpTssGetDataOptParam
+{
+	u64 size;
+	vm::ptr<uint64_t> offset;
+	vm::ptr<uint64_t> lastByte;
+	vm::ptr<SceNpTssIfModifiedSinceParam> ifParam;
 };
