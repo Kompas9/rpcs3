@@ -8,6 +8,9 @@
 #include <QDesktopWidget>
 #include <QMimeData>
 
+#include "discord_rpc.h"
+#include "discord_register.h"
+
 #include "qt_utils.h"
 #include "vfs_dialog.h"
 #include "save_manager_dialog.h"
@@ -238,6 +241,20 @@ void main_window::Boot(const std::string& path, bool direct, bool add_only)
 		LOG_SUCCESS(LOADER, "Boot successful.");
 		const std::string serial = Emu.GetTitleID().empty() ? "" : "[" + Emu.GetTitleID() + "] ";
 		AddRecentAction(gui::Recent_Game(qstr(Emu.GetBoot()), qstr(serial + Emu.GetTitle())));
+#ifdef DISCORD_RPC
+		// Discord Rich Presence Integration
+		DiscordRichPresence discordPresence;
+		memset(&discordPresence, 0, sizeof(discordPresence));
+		discordPresence.state = Emu.GetTitleID().c_str();
+		discordPresence.details = Emu.GetTitle().c_str();
+		discordPresence.largeImageKey = "rpcs3_logo";
+		discordPresence.smallImageKey = "rpcs3_logo";
+		discordPresence.largeImageText = "RPCS3 is the world's first PlayStation 3 emulator.";
+		discordPresence.smallImageText = " ";
+		discordPresence.startTimestamp = time(0);
+		discordPresence.instance = 0;
+		Discord_UpdatePresence(&discordPresence);
+#endif DISCORD_RPC
 	}
 	else
 	{

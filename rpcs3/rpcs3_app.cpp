@@ -4,6 +4,9 @@
 
 #include "rpcs3qt/welcome_dialog.h"
 
+#include "discord_rpc.h"
+#include "discord_register.h"
+
 #include "Emu/System.h"
 #include "rpcs3qt/gs_frame.h"
 #include "rpcs3qt/gl_gs_frame.h"
@@ -88,6 +91,11 @@ void rpcs3_app::Init()
 		welcome_dialog* welcome = new welcome_dialog();
 		welcome->exec();
 	}
+#ifdef DISCORD_RPC
+	DiscordEventHandlers handlers;
+	memset(&handlers, 0, sizeof(handlers));
+	Discord_Initialize("424004941485572097", &handlers, 1, NULL);
+#endif
 }
 
 /** RPCS3 emulator has functions it desires to call from the GUI at times. Initialize them in here.
