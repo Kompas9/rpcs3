@@ -571,15 +571,11 @@ static NEVER_INLINE s32 savedata_op(ppu_thread& ppu, u32 operation, u32 version,
 		// Stat Callback
 		funcStat(ppu, result, statGet, statSet);
 
+		// result values >= 0 seem to be equivalent for funcStat
 		if (result->result < 0)
 		{
 			cellSaveData.warning("savedata_op(): funcStat returned result=%d.", result->result);
 			return CELL_SAVEDATA_ERROR_CBRESULT;
-		}
-
-		if (result->result == CELL_SAVEDATA_CBRESULT_OK_LAST || result->result == CELL_SAVEDATA_CBRESULT_OK_LAST_NOCONFIRM)
-		{
-			return CELL_OK;
 		}
 
 		if (statSet->setParam)
