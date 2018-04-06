@@ -82,13 +82,14 @@ add_custom_command(OUTPUT something_that_never_exists
 include(ConfigureCompiler)
 
 if(WIN32)
+	add_definitions(-DDISCORD_RPC)
 	add_definitions(-DUNICODE)
 	add_definitions(-D_WIN32_WINNT=0x0601)
 	set(RES_FILES "rpcs3.rc")
 else()
 	add_definitions(-DGL_GLEXT_PROTOTYPES)
 	add_definitions(-DGLX_GLXEXT_PROTOTYPES)
-	if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux" OR WIN32)
+	if(${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
 		# We don't want Discord Rich Presence on the BSDs and other OSes
 		add_definitions(-DDISCORD_RPC)
 	endif()
