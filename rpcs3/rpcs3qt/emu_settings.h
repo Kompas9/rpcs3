@@ -172,6 +172,9 @@ public:
 	/** Sets the setting type to a given value.*/
 	void SetSetting(SettingsType type, const std::string& val);
 
+	/** Returns and sets the default value of the setting type.*/
+	std::string ResetAndGetSetting(SettingsType type);
+
 	/** Gets all the renderer info for gpu settings.*/
 	Render_Creator m_render_creator;
 

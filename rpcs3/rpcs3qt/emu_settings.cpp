@@ -237,22 +237,21 @@ void emu_settings::EnhanceComboBox(QComboBox* combobox, SettingsType type, bool 
 	}
 	else
 	{
-		for (QString setting : GetSettingOptions(type))
+		for (const QString& setting : GetSettingOptions(type))
 		{
 			combobox->addItem(tr(setting.toStdString().c_str()), QVariant(setting));
 		}
 	}
 
-	QString selected = qstr(GetSetting(type));
-	int index = combobox->findData(selected);
+	std::string selected = GetSetting(type);
+	int index = combobox->findData(qstr(selected));
 	if (index == -1)
 	{
-		LOG_WARNING(GENERAL, "Current setting not found while creating combobox");
+		std::string new_selected = ResetAndGetSetting(type);
+		index = combobox->findData(qstr(new_selected));
+		LOG_WARNING(GENERAL, "Combobox: \"%s\" now uses the default setting: \"%s\". Old setting not valid: \"%s\".", GetSettingName(type), new_selected, selected);
 	}
-	else
-	{
-		combobox->setCurrentIndex(index);
-	}
+	combobox->setCurrentIndex(index);
 
 	connect(combobox, static_cast<void(QComboBox::*)(int)>(&QComboBox::currentIndexChanged), [=](int index)
 	{
@@ -262,14 +261,16 @@ void emu_settings::EnhanceComboBox(QComboBox* combobox, SettingsType type, bool 
 
 void emu_settings::EnhanceCheckBox(QCheckBox* checkbox, SettingsType type)
 {
-	std::string currSet = GetSetting(type);
-	if (currSet == "true")
+	std::string selected = GetSetting(type);
+	if (selected == "true")
 	{
 		checkbox->setChecked(true);
 	}
-	else if (currSet != "false")
+	else if (selected != "false")
 	{
-		LOG_WARNING(GENERAL, "Passed in an invalid setting for creating enhanced checkbox");
+		std::string new_selected = ResetAndGetSetting(type);
+		checkbox->setChecked(new_selected == "true" ? true : false);
+		LOG_WARNING(GENERAL, "CheckBox: \"%s\" now uses the default setting: \"%s\". Old setting not valid: \"%s\".", GetSettingName(type), new_selected, selected);
 	}
 
 	connect(checkbox, &QCheckBox::stateChanged, [=](int val)
@@ -288,12 +289,15 @@ void emu_settings::EnhanceSlider(QSlider* slider, SettingsType type, bool is_ran
 		QStringList range = GetSettingOptions(type);
 		int min = range.first().toInt();
 		int max = range.last().toInt();
-		int val = selected.toInt();
 
-		if (val < min || val > max)
+		bool ok; // check for valid new value (min and max should be fine)
+		int val = selected.toInt(&ok);
+
+		if (!ok || val < min || val > max)
 		{
-			LOG_ERROR(GENERAL, "Passed in an invalid setting for creating enhanced slider");
-			val = min;
+			std::string new_selected = ResetAndGetSetting(type);
+			val = stoi(new_selected);
+			LOG_WARNING(GENERAL, "Slider: \"%s\" now uses the default setting: \"%s\". Old setting not valid: \"%s\".", GetSettingName(type), new_selected, sstr(selected));
 		}
 
 		slider->setMinimum(min);
@@ -346,4 +350,18 @@ std::string emu_settings::GetSetting(SettingsType type) const
 void emu_settings::SetSetting(SettingsType type, const std::string& val)
 {
 	cfg_adapter::get_node(m_currentSettings, SettingsLoc[type]) = val;
+}
+
+std::string emu_settings::ResetAndGetSetting(SettingsType type)
+{
+	// Get default setting
+	cfg_root default_config; // for travis
+	cfg_location location = const_cast<cfg_location&&>(SettingsLoc[type]);
+	cfg::_base* base = &cfg_adapter::get_cfg(default_config, location.cbegin(), location.cend());
+	std::string def = base->to_string();
+
+	// Write default value to setting
+	cfg_adapter::get_node(m_currentSettings, SettingsLoc[type]) = def;
+
+	return def;
 }
