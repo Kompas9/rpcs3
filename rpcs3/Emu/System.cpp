@@ -606,7 +606,8 @@ void Emulator::Load(bool add_only)
 			// Load /dev_bdvd/ from game list if available
 			if (auto node = games[m_title_id])
 			{
-				bdvd_dir = node.Scalar();
+				const std::string game_dir = node.Scalar();
+				bdvd_dir = game_dir.substr(0, game_dir.size() - ps3_dir_size);
 			}
 			else
 			{
@@ -637,7 +638,7 @@ void Emulator::Load(bool add_only)
 			}
 
 			// Store /dev_bdvd/ location
-			games[m_title_id] = bdvd_dir;
+			games[m_title_id] = bdvd_dir + m_game_dir;
 			YAML::Emitter out;
 			out << games;
 			fs::file(fs::get_config_dir() + "/games.yml", fs::rewrite).write(out.c_str(), out.size());

@@ -285,9 +285,19 @@ void game_list_frame::Refresh(const bool fromDrive, const bool scrollAfter)
 		{
 			for (const auto& entry : fs::dir(path))
 			{
-				if (entry.is_directory)
+				const std::string entry_path = path + entry.name;
+				if (fs::is_file(entry_path + "/PS3_DISC.SFB"))
 				{
-					path_list.emplace_back(path + entry.name);
+					for (const auto& sub_entry : fs::dir(entry_path))
+					{
+						if (!sub_entry.is_directory) continue;
+						if (sub_entry.name == "PS3_GAME" || qstr(sub_entry.name).contains("PS3_GM"))
+							path_list.emplace_back(entry_path + "/" + sub_entry.name);
+					}
+				}
+				else if (entry.is_directory)
+				{
+					path_list.emplace_back(entry_path);
 				}
 			}
 		};
@@ -308,9 +318,7 @@ void game_list_frame::Refresh(const bool fromDrive, const bool scrollAfter)
 
 		for (const auto& dir : path_list) { try
 		{
-			const std::string sfb = dir + "/PS3_DISC.SFB";
-			const std::string sfo = dir + (fs::is_file(sfb) ? "/PS3_GAME/PARAM.SFO" : "/PARAM.SFO");
-
+			std::string sfo = dir + "/PARAM.SFO";
 			const fs::file sfo_file(sfo);
 			if (!sfo_file)
 			{
@@ -342,15 +350,7 @@ void game_list_frame::Refresh(const bool fromDrive, const bool scrollAfter)
 			auto cat = category::cat_boot.find(game.category);
 			if (cat != category::cat_boot.end())
 			{
-				if (game.category == "DG")
-				{
-					game.icon_path = dir + "/PS3_GAME/ICON0.PNG";
-				}
-				else
-				{
-					game.icon_path = dir + "/ICON0.PNG";
-				}
-
+				game.icon_path = dir + "/ICON0.PNG";
 				game.category = sstr(cat->second);
 				bootable = true;
 			}
