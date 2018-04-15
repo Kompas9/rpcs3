@@ -1541,11 +1541,9 @@ void main_window::AddGamesFromDir(const QString& path)
 	// search direct subdirectories, that way we can drop one folder containing all games
 	for (const auto& entry : fs::dir(s_path))
 	{
-		if (entry.name == "." || entry.name == "..") continue;
+		if (!entry.is_directory || entry.name == "." || entry.name == "..") continue;
 
 		const std::string pth = s_path + "/" + entry.name;
-
-		if (!QFileInfo(qstr(pth)).isDir()) continue;
 
 		if (Emu.BootGame(pth, false, true))
 		{
