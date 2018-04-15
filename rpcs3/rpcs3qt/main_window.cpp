@@ -188,8 +188,16 @@ void main_window::SetAppIconFromPath(const std::string& path)
 {
 	// get Icon for the gs_frame from path. this handles presumably all possible use cases
 	QString qpath = qstr(path);
-	std::string icon_list[] = { "/ICON0.PNG", "/PS3_GAME/ICON0.PNG" };
+	std::vector<std::string> icon_list{"/ICON0.PNG"};
+
+	if (qpath.contains("/PS3_GM"))
+	{
+		icon_list.push_back("/" + path.substr(path.rfind("/PS3_GM") + 1, 8) + "/ICON0.PNG");
+	}
+
+	icon_list.push_back("/PS3_GAME/ICON0.PNG");
 	std::string path_list[] = { path, sstr(qpath.section("/", 0, -2)), sstr(qpath.section("/", 0, -3)) };
+
 	for (std::string pth : path_list)
 	{
 		if (!fs::is_dir(pth)) continue;
