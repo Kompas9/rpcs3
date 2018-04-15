@@ -362,17 +362,6 @@ void Emulator::Load(bool add_only)
 				return sfov;
 			}
 
-			if (fs::is_dir(m_path))
-			{
-				// Special case (directory scan)
-				if (fs::file sfo{m_path + "/PS3_GAME/PARAM.SFO"})
-				{
-					return sfo;
-				}
-
-				return fs::file{m_path + "/PARAM.SFO"};
-			}
-
 			if (disc.size())
 			{
 				// Check previously used category before it's overwritten
@@ -685,9 +674,10 @@ void Emulator::Load(bool add_only)
 
 				for (auto&& entry : fs::dir{ins_dir})
 				{
-					if (!entry.is_directory && ends_with(entry.name, ".PKG") && !InstallPkg(ins_dir + entry.name))
+					const std::string pkg = ins_dir + entry.name;
+					if (!entry.is_directory && ends_with(entry.name, ".PKG") && !InstallPkg(pkg))
 					{
-						LOG_ERROR(LOADER, "Failed to install /dev_bdvd/PS3_GAME/INSDIR/%s", entry.name);
+						LOG_ERROR(LOADER, "Failed to install %s", pkg);
 						return;
 					}
 				}
@@ -705,7 +695,7 @@ void Emulator::Load(bool add_only)
 
 						if (fs::is_file(pkg_file) && !InstallPkg(pkg_file))
 						{
-							LOG_ERROR(LOADER, "Failed to install /dev_bdvd/PS3_GAME/PKGDIR/%s/INSTALL.PKG", entry.name);
+							LOG_ERROR(LOADER, "Failed to install %s", pkg_file);
 							return;
 						}
 					}
@@ -724,7 +714,7 @@ void Emulator::Load(bool add_only)
 
 						if (fs::is_file(pkg_file) && !InstallPkg(pkg_file))
 						{
-							LOG_ERROR(LOADER, "Failed to install /dev_bdvd/PS3_GAME/PKGDIR/%s/DATA000.PKG", entry.name);
+							LOG_ERROR(LOADER, "Failed to install %s", pkg_file);
 							return;
 						}
 					}
