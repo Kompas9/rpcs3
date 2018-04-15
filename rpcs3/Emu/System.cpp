@@ -237,10 +237,10 @@ bool Emulator::BootGame(const std::string& path, bool direct, bool add_only)
 {
 	static const char* boot_list[] =
 	{
-		"/PS3_GAME/USRDIR/EBOOT.BIN",
-		"/USRDIR/EBOOT.BIN",
-		"/EBOOT.BIN",
 		"/eboot.bin",
+		"/EBOOT.BIN",
+		"/USRDIR/EBOOT.BIN",
+		"/PS3_GAME/USRDIR/EBOOT.BIN",
 	};
 
 	if (direct && fs::exists(path))
@@ -250,6 +250,7 @@ bool Emulator::BootGame(const std::string& path, bool direct, bool add_only)
 		return true;
 	}
 
+	bool success = false;
 	for (std::string elf : boot_list)
 	{
 		elf = path + elf;
@@ -258,11 +259,25 @@ bool Emulator::BootGame(const std::string& path, bool direct, bool add_only)
 		{
 			m_path = elf;
 			Load(add_only);
-			return true;
+			success = true;
+			break;
 		}
 	}
 
-	return false;
+	if (!add_only) return success;
+
+	for (int i = 0; i < 100; i++)
+	{
+		const std::string elf = fmt::format("%s/PS3_GM%02d/USRDIR/EBOOT.BIN", path, i);
+		if (fs::is_file(elf))
+		{
+			m_path = elf;
+			Load(add_only);
+			success = true;
+		}
+	}
+
+	return success;
 }
 
 bool Emulator::InstallPkg(const std::string& path)
