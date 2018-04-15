@@ -179,6 +179,7 @@ class Emulator final
 	std::string m_title;
 	std::string m_cat;
 	std::string m_dir;
+	std::string m_game_dir{"PS3_GAME"};
 
 	bool m_force_boot = false;
 
@@ -245,6 +246,11 @@ public:
 	const std::string& GetDir() const
 	{
 		return m_dir;
+	}
+
+	const std::string& GetGameDir() const
+	{
+		return m_game_dir;
 	}
 
 	u64 GetPauseTime()
