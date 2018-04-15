@@ -199,7 +199,7 @@ error_code sceNpTrophyCreateContext(vm::ptr<u32> context, vm::cptr<SceNpCommunic
 
 	if (!stream && Emu.GetCat() == "GD")
 	{
-		stream.open(vfs::get("/dev_bdvd/PS3_GAME/TROPDIR/" + name + "/TROPHY.TRP"));
+		stream.open(vfs::get("/dev_bdvd/" + Emu.GetGameDir() + "/TROPDIR/" + name + "/TROPHY.TRP"));
 	}
 
 	// check if exists and opened
