@@ -41,6 +41,8 @@ namespace utils
 
 	bool has_xop();
 
+	bool is_haswell_or_broadwell();
+
 	FORCE_INLINE bool transaction_enter(uint* out = nullptr)
 	{
 		while (true)

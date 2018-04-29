@@ -1,5 +1,6 @@
 #include "sysinfo.h"
 #include "StrFmt.h"
+#include "Emu/System.h"
 
 #ifdef _WIN32
 #include "windows.h"
@@ -33,25 +34,7 @@ bool utils::has_avx2()
 
 bool utils::has_rtm()
 {
-	// Check RTM
 	static bool g_value = get_cpuid(0, 0)[0] >= 0x7 && (get_cpuid(7, 0)[1] & 0x800) == 0x800;
-	
-	// Do these checks only if TSX is available and only once
-	static bool RTMChecked = !g_value;
-	if (RTMChecked)
-	{
-		return g_value;
-	}
-	else
-	{
-		// Get CPU Model
-		int Model = (get_cpuid(1, 0)[0] >> 4) & 0xf;
-		Model += ((get_cpuid(1, 0)[0] >> 16) & 0xf) << 4;
-		
-		// If CPU is Haswell, disable TSX (for now)
-		g_value = Model != 0x3c && Model != 0x3f && Model != 0x45 && Model != 0x46;
-		RTMChecked = !RTMChecked;
-	}
 	return g_value;
 }
 
@@ -65,6 +48,14 @@ bool utils::has_512()
 bool utils::has_xop()
 {
 	static const bool g_value = has_avx() && get_cpuid(0x80000001, 0)[2] & 0x800;
+	return g_value;
+}
+
+bool utils::is_haswell_or_broadwell()
+{
+	static const int g_model = ((get_cpuid(1, 0)[0] >> 4) & 0xf) + (((get_cpuid(1, 0)[0] >> 16) & 0xf) << 4);
+	static const bool g_value = g_model == 0x3c || g_model == 0x3f || g_model == 0x45 || g_model == 0x46 || // Haswell
+	                            g_model == 0x3d || g_model == 0x4f || g_model == 0x47 || g_model == 0x56;   // Broadwell
 	return g_value;
 }
 
